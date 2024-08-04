@@ -13,16 +13,19 @@ import org.springframework.web.bind.annotation.*;
 public class ProductController {
 
     //String serviceType;
-    private ProductService prodService;
+    private ProductService productService;
 
-    public ProductController(@Qualifier("FakeStoreImpl") ProductService prodService){    // In qualifier we will add service class name
-        this.prodService = prodService;                  //Assigning object of productService
+    public ProductController(@Qualifier("FakeStoreImpl") ProductService productService){    // In qualifier we will add service class name
+        this.productService = productService;                  //Assigning object of productService
     }
 
     @PostMapping("") // This method will create products .
-    public String createProduct(@RequestBody CreateProductRequestDto createdto) {   // We will receive dto object as part of request body
-        //Product product = ProductService.createProduct(CreateProductRequestDto.toProduct());
-         return "This product is priced at :"+createdto.getPrice();
+    public CreateProductResponseDto createProduct(@RequestBody CreateProductRequestDto createProductRequestDto) {   // We will receive dto object as part of request body
+        Product product = productService.createProduct(createProductRequestDto.toProduct());  // It will return a models
+
+        // Convert product to response form
+        return CreateProductResponseDto.fromProduct(product);  // It will return product
+         //return "This product is priced at :"product.getPrice();
     }
 
     @GetMapping("")

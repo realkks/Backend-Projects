@@ -14,15 +14,16 @@ public class CreateProductRequestDto {
     private String category;
     private String imageurl;
 
-//    public Product toProduct()  {            // It will convert dto object to product models
-//        Product product = new Product();
-//        product.setId(this.id) ;
-//        product.setName(this.name);
-//        product.setPrice(this.price);
-//        product.setCategory(this.category);
-//        product.setImageurl(this.imageurl);
-//        return product;
-//    }
+    // It will act as a mapper
+    public Product toProduct()  {            // It will convert dto object to product models
+        Product product = new Product();
+        product.setId(this.id) ;
+        product.setName(this.name);
+        product.setPrice(this.price);
+        product.setCategory(this.category);
+        product.setImageurl(this.imageurl);
+        return product;
+    }
 
 
 
