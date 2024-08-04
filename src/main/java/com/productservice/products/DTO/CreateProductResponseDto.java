@@ -13,6 +13,7 @@ public class CreateProductResponseDto {
     private double price;
     private String category;
     private String imageurl;
+    private String description;
 
     public static CreateProductResponseDto fromProduct(Product product){
         CreateProductResponseDto responseDto = new CreateProductResponseDto();
@@ -21,6 +22,7 @@ public class CreateProductResponseDto {
         responseDto.setPrice(product.getPrice());
         responseDto.setCategory(product.getCategory());
         responseDto.setImageurl(product.getImageurl());
+        responseDto.setDescription(product.getDescription());
 
         return responseDto;
     }
