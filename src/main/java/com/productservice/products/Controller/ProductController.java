@@ -1,10 +1,10 @@
 package com.productservice.products.Controller;
 
-import com.productservice.products.DTO.*;
+import com.productservice.products.DTO.ErrorResponseDto;
+import com.productservice.products.DTO.ProductsDto.*;
 import com.productservice.products.Models.Product;
 import com.productservice.products.Services.ProductService;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -35,18 +35,18 @@ public class ProductController {
     public GetAllProductResponseDto getAllProducts(){
         List<Product> products= productService.getAllProduct();
         GetAllProductResponseDto response = new GetAllProductResponseDto();
-        List<GetPrductDto> getProductResponseDtos = new ArrayList<>();
+        List<GetProductDto> getProductResponseDtos = new ArrayList<>();
         for(Product product:products){
-            getProductResponseDtos.add(GetPrductDto.fromProduct(product));
+            getProductResponseDtos.add(GetProductDto.fromProduct(product));
         }
         response.setProducts(getProductResponseDtos);
         return response;
 
     }
-    @GetMapping("/{id}")        // Variable path
-    public String getSingleProduct(@PathVariable ("id") long id){    // Defining path variable and receiving required id.
-        return "Here is your product" + id ;
-    }
+//    @GetMapping("/{id}")        // Variable path
+//    public String getSingleProduct(@PathVariable ("id") long id){    // Defining path variable and receiving required id.
+//        return "Here is your product" + id ;
+//    }
 
     @DeleteMapping("/{id}")
     public void deleteSingleproduct(){
@@ -56,4 +56,14 @@ public class ProductController {
     public String something(){
     return "Kamlesh magic ";
     }
+
+    @PatchMapping("/{id}")
+    public PatchProductResponseDto updateProduct(@PathVariable ("id") Long productId ,
+                                                 @RequestBody CreateProductDto createProductDto){
+        Product product = productService.updateProduct(productId,createProductDto.toProduct());
+        PatchProductResponseDto response = new PatchProductResponseDto();           // Response object
+        response.setProduct(GetProductDto.fromProduct(product));
+        return response;
+    }
+
 }

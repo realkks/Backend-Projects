@@ -1,4 +1,4 @@
-package com.productservice.products.DTO;
+package com.productservice.products.DTO.ProductsDto;
 
 import com.productservice.products.Models.Product;
 import lombok.Getter;
@@ -24,5 +24,16 @@ public class CreateProductDto {
         responseDto.setDescription(product.getDescription());
 
         return responseDto;
+    }
+    public Product toProduct()  {            // It will convert dto object to product models
+        Product product = new Product();
+        product.setId(this.id); ;
+        product.setName(this.title);
+        product.setPrice(this.price);
+        product.setCategory(this.category);
+        product.setImageurl(this.image);
+        product.setDescription(this.description);
+
+        return product;
     }
 }

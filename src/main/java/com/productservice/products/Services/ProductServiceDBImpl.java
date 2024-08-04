@@ -1,6 +1,5 @@
 package com.productservice.products.Services;
 
-import com.productservice.products.DTO.GetProductResponseDto;
 import com.productservice.products.Models.Product;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +14,11 @@ public class ProductServiceDBImpl implements ProductService {
 
     @Override
     public List<Product> getAllProduct() {
+        return null;
+    }
+
+    @Override
+    public Product updateProduct(Long id, Product product) {
         return null;
     }
 }

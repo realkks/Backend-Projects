@@ -1,4 +1,4 @@
-package com.productservice.products.DTO;
+package com.productservice.products.DTO.FakeStoreDto;
 
 import com.productservice.products.Models.Product;
 import lombok.Getter;

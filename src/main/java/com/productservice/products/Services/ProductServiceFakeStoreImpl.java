@@ -1,8 +1,8 @@
 package com.productservice.products.Services;
 
-import com.productservice.products.DTO.FakeStoreCreateProductRequestDto;
-import com.productservice.products.DTO.FakeStoreGetProductResponseDto;
-import com.productservice.products.DTO.GetAllProductResponseDto;
+import com.productservice.products.DTO.FakeStoreDto.FakeStoreCreateProductRequestDto;
+import com.productservice.products.DTO.FakeStoreDto.FakeStoreGetProductResponseDto;
+import com.productservice.products.DTO.ProductsDto.GetProductResponseDto;
 import com.productservice.products.Models.Product;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -48,15 +48,24 @@ public class ProductServiceFakeStoreImpl implements ProductService {
 
     @Override
     public List<Product> getAllProduct() {
-        FakeStoreGetProductResponseDto[] response = restTemplate.getForObject
-                ("https://fakestoreapi.com/products", FakeStoreGetProductResponseDto[].class);
+        throw new RuntimeException() ;
+//        FakeStoreGetProductResponseDto[] response = restTemplate.getForObject
+//                ("https://fakestoreapi.com/products", FakeStoreGetProductResponseDto[].class);
+//
+//        List<FakeStoreGetProductResponseDto> responseDtoList = Stream.of(response).toList();
+//        List<Product> products = new ArrayList<>();
+//        for(FakeStoreGetProductResponseDto responsedto :responseDtoList){
+//            products.add(responsedto.toProduct());
+//        }
+//        return products;
 
-        List<FakeStoreGetProductResponseDto> responseDtoList = Stream.of(response).toList();
-        List<Product> products = new ArrayList<>();
-        for(FakeStoreGetProductResponseDto responsedto :responseDtoList){
-            products.add(responsedto.toProduct());
-        }
-        return products;
+    }
+
+    public Product updateProduct(Long productId,Product product){
+        FakeStoreGetProductResponseDto ProductResponseDto = restTemplate.patchForObject("https://fakestoreapi.com/products/"+productId,
+                FakeStoreCreateProductRequestDto.fromProduct(product), FakeStoreGetProductResponseDto.class);
+
+        return ProductResponseDto.toProduct();
 
     }
 }

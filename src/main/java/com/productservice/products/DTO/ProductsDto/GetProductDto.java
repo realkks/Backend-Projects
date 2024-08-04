@@ -1,12 +1,14 @@
-package com.productservice.products.DTO;
+package com.productservice.products.DTO.ProductsDto;
 
 import com.productservice.products.Models.Product;
 import lombok.Getter;
 import lombok.Setter;
 
+
+// This class will be used to set attributes dto object to product object .
 @Getter
 @Setter
-public class GetPrductDto {
+public class GetProductDto {
     private long id;
     private String title;
     private double price;
@@ -14,8 +16,8 @@ public class GetPrductDto {
     private String image;
     private String category;
 
-    public static GetPrductDto fromProduct(Product product){
-        GetPrductDto getProductDto = new GetPrductDto();
+    public static GetProductDto fromProduct(Product product){
+        GetProductDto getProductDto = new GetProductDto();
         getProductDto.setId(product.getId());
         getProductDto.setTitle(product.getName());
         getProductDto.setPrice(product.getPrice());
