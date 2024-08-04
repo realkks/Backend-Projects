@@ -1,11 +1,15 @@
 package com.productservice.products.Services;
 
 import com.productservice.products.DTO.FakeStoreCreateProductRequestDto;
-import com.productservice.products.DTO.FakeStoreCreateProductResponseDto;
+import com.productservice.products.DTO.FakeStoreGetProductResponseDto;
+import com.productservice.products.DTO.GetAllProductResponseDto;
 import com.productservice.products.Models.Product;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Stream;
 
 // Object of this class will be automatically created by spring when required.
 @Service("FakeStoreImpl")
@@ -28,8 +32,9 @@ public class ProductServiceFakeStoreImpl implements ProductService {
         request.setDescription(product.getDescription());
 
         // Calling 3rd party api : Parameters required for postForObject (url,object,return onject)
-        FakeStoreCreateProductResponseDto response =  restTemplate.postForObject("https://fakestoreapi.com/products",request,
-                FakeStoreCreateProductResponseDto.class);
+        FakeStoreGetProductResponseDto response =  restTemplate.postForObject
+                ("https://fakestoreapi.com/products",request,
+                FakeStoreGetProductResponseDto.class);
         Product fakeStoreproduct = new Product();
         fakeStoreproduct.setId(response.getId());
         fakeStoreproduct.setName(response.getTitle());
@@ -39,5 +44,19 @@ public class ProductServiceFakeStoreImpl implements ProductService {
         fakeStoreproduct.setDescription(response.getDescription());
 
         return fakeStoreproduct;
+    }
+
+    @Override
+    public List<Product> getAllProduct() {
+        FakeStoreGetProductResponseDto[] response = restTemplate.getForObject
+                ("https://fakestoreapi.com/products", FakeStoreGetProductResponseDto[].class);
+
+        List<FakeStoreGetProductResponseDto> responseDtoList = Stream.of(response).toList();
+        List<Product> products = new ArrayList<>();
+        for(FakeStoreGetProductResponseDto responsedto :responseDtoList){
+            products.add(responsedto.toProduct());
+        }
+        return products;
+
     }
 }

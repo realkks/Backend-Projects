@@ -1,12 +1,14 @@
 package com.productservice.products.Controller;
 
-import com.productservice.products.DTO.CreateProductResponseDto;
-import com.productservice.products.DTO.CreateProductRequestDto;
+import com.productservice.products.DTO.*;
 import com.productservice.products.Models.Product;
 import com.productservice.products.Services.ProductService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/products") // /products path will be common for all methods in this class .
@@ -28,8 +30,17 @@ public class ProductController {
          //return "This product is priced at :"product.getPrice();
     }
 
+    // It will return list of object/product
     @GetMapping("")
-    public void getAllProducts(){
+    public GetAllProductResponseDto getAllProducts(){
+        List<Product> products= productService.getAllProduct();
+        GetAllProductResponseDto response = new GetAllProductResponseDto();
+        List<GetPrductDto> getProductResponseDtos = new ArrayList<>();
+        for(Product product:products){
+            getProductResponseDtos.add(GetPrductDto.fromProduct(product));
+        }
+        response.setProducts(getProductResponseDtos);
+        return response;
 
     }
     @GetMapping("/{id}")        // Variable path
