@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/products") // /products path will be common for all methods in this class .
 public class ProductController {
 
-    @Value("${productServiceType}")
     //String serviceType;
     private ProductService prodService;
 
@@ -21,7 +20,7 @@ public class ProductController {
     }
 
     @PostMapping("") // This method will create products .
-    public CreateProductResponseDto createProduct(@RequestBody CreateProductRequestDto createdto) {   // We will receive dto object as part of request body
+    public String createProduct(@RequestBody CreateProductRequestDto createdto) {   // We will receive dto object as part of request body
         //Product product = ProductService.createProduct(CreateProductRequestDto.toProduct());
          return "This product is priced at :"+createdto.getPrice();
     }

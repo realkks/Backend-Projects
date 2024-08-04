@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 @Service("FakeStoreImpl")
 //@Primary
 public class ProductServiceFakeStoreImpl implements ProductService {
-    public Product createProduct(Product product){
-        return null;
+    public  void createProduct(long id,String name , double price, String category, String imageurl){
+        //return null;
     }
 }
