@@ -1,5 +1,6 @@
 package com.productservice.products.DTO.ProductsDto;
 
+import com.productservice.products.Models.Category;
 import com.productservice.products.Models.Product;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,14 +15,12 @@ public class GetProductDto {
     private double price;
     private String description;
     private String image;
-    private String category;
 
     public static GetProductDto fromProduct(Product product){
         GetProductDto getProductDto = new GetProductDto();
         getProductDto.setId(product.getId());
         getProductDto.setTitle(product.getName());
         getProductDto.setPrice(product.getPrice());
-        getProductDto.setCategory(product.getCategory());
         getProductDto.setImage(product.getImageurl());
         getProductDto.setDescription(product.getDescription());
 

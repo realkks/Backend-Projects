@@ -2,7 +2,7 @@ package com.productservice.products.Services;
 
 import com.productservice.products.DTO.FakeStoreDto.FakeStoreCreateProductRequestDto;
 import com.productservice.products.DTO.FakeStoreDto.FakeStoreGetProductResponseDto;
-import com.productservice.products.DTO.ProductsDto.GetProductResponseDto;
+import com.productservice.products.Models.Category;
 import com.productservice.products.Models.Product;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -27,7 +27,7 @@ public class ProductServiceFakeStoreImpl implements ProductService {
         // Setting 3rd party api attribute name according to ours
         request.setTitle(product.getName());
         request.setPrice(product.getPrice());
-        request.setCategory(product.getCategory());
+        request.setCategoryName(product.getCategory().getName());
         request.setImage(product.getImageurl());
         request.setDescription(product.getDescription());
 
@@ -40,7 +40,6 @@ public class ProductServiceFakeStoreImpl implements ProductService {
         fakeStoreproduct.setName(response.getTitle());
         fakeStoreproduct.setImageurl(response.getImage());
         fakeStoreproduct.setPrice(response.getPrice());
-        fakeStoreproduct.setCategory(response.getCategory());
         fakeStoreproduct.setDescription(response.getDescription());
 
         return fakeStoreproduct;
@@ -48,16 +47,16 @@ public class ProductServiceFakeStoreImpl implements ProductService {
 
     @Override
     public List<Product> getAllProduct() {
-        throw new RuntimeException() ;
-//        FakeStoreGetProductResponseDto[] response = restTemplate.getForObject
-//                ("https://fakestoreapi.com/products", FakeStoreGetProductResponseDto[].class);
-//
-//        List<FakeStoreGetProductResponseDto> responseDtoList = Stream.of(response).toList();
-//        List<Product> products = new ArrayList<>();
-//        for(FakeStoreGetProductResponseDto responsedto :responseDtoList){
-//            products.add(responsedto.toProduct());
-//        }
-//        return products;
+        //throw new RuntimeException() ;
+        FakeStoreGetProductResponseDto[] response = restTemplate.getForObject
+                ("https://fakestoreapi.com/products", FakeStoreGetProductResponseDto[].class);
+
+        List<FakeStoreGetProductResponseDto> responseDtoList = Stream.of(response).toList();
+        List<Product> products = new ArrayList<>();
+        for(FakeStoreGetProductResponseDto responsedto :responseDtoList){
+            products.add(responsedto.toProduct());
+        }
+        return products;
 
     }
 

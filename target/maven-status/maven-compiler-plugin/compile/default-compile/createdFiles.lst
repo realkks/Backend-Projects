@@ -1,0 +1,5 @@
+com\productservice\products\Services\ProductService.class
+com\productservice\products\Configs\ApplicationConfiguration.class
+com\productservice\products\Controller\ProductController.class
+com\productservice\products\DTO\ErrorResponseDto.class
+com\productservice\products\Advices\ExceptionAdvices.class

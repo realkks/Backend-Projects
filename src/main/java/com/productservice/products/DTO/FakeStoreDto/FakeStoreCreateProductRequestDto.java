@@ -1,6 +1,7 @@
 package com.productservice.products.DTO.FakeStoreDto;
 
 
+import com.productservice.products.Models.Category;
 import com.productservice.products.Models.Product;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,13 +14,13 @@ public class FakeStoreCreateProductRequestDto {
     private double price;
     private String description;
     private String image;
-    private String category;
+    private String categoryName;
 
     public static FakeStoreCreateProductRequestDto fromProduct(Product product){
         FakeStoreCreateProductRequestDto fscprd = new FakeStoreCreateProductRequestDto();
         fscprd.setTitle(product.getName());
         fscprd.setDescription(product.getDescription());
-        fscprd.setCategory(product.getCategory());
+        fscprd.setCategoryName(product.getCategory().getName());
         fscprd.setPrice(product.getPrice());
         fscprd.setImage(product.getImageurl());
 

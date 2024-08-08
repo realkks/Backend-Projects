@@ -1,5 +1,6 @@
 package com.productservice.products.DTO.ProductsDto;
 
+import com.productservice.products.Models.Category;
 import com.productservice.products.Models.Product;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,14 +13,13 @@ public class CreateProductDto {
     private double price;
     private String description;
     private String image;
-    private String category;
+    private String categoryName;
 
     public CreateProductDto fromProduct(Product product)  {            // It will convert dto object to product models
         CreateProductDto responseDto = new CreateProductDto();
         responseDto.setId(product.getId());
         responseDto.setTitle(product.getName());
         responseDto.setPrice(product.getPrice());
-        responseDto.setCategory(product.getCategory());
         responseDto.setImage(product.getImageurl());
         responseDto.setDescription(product.getDescription());
 
@@ -30,7 +30,9 @@ public class CreateProductDto {
         product.setId(this.id); ;
         product.setName(this.title);
         product.setPrice(this.price);
-        product.setCategory(this.category);
+        Category category = new Category();
+        category.setName(categoryName);
+        product.setCategory(category);
         product.setImageurl(this.image);
         product.setDescription(this.description);
 
