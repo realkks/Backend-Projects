@@ -9,9 +9,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CreateProductRequestDto {
-    private long id;
+    //private long id;          //We want to generate id by database
     private String name;
-    private double price;
+    private Double price;
     private String categoryName;
     private String imageurl;
     private String description;
@@ -19,7 +19,7 @@ public class CreateProductRequestDto {
     // It will act as a mapper
     public Product toProduct()  {            // It will convert dto object to product models
         Product product = new Product();
-        product.setId(this.id); ;
+        //product.setId(this.id); ;
         product.setName(this.name);
         product.setPrice(this.price);
         Category category = new Category();

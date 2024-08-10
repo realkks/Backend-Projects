@@ -2,7 +2,7 @@ package com.productservice.products.Services;
 
 import com.productservice.products.DTO.FakeStoreDto.FakeStoreCreateProductRequestDto;
 import com.productservice.products.DTO.FakeStoreDto.FakeStoreGetProductResponseDto;
-import com.productservice.products.Models.Category;
+import com.productservice.products.Exceptions.ProductNotFoundException;
 import com.productservice.products.Models.Product;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -60,7 +60,7 @@ public class ProductServiceFakeStoreImpl implements ProductService {
 
     }
 
-    public Product updateProduct(Long productId,Product product){
+    public Product updateProduct(Long productId, Product product){
         FakeStoreGetProductResponseDto ProductResponseDto = restTemplate.patchForObject("https://fakestoreapi.com/products/"+productId,
                 FakeStoreCreateProductRequestDto.fromProduct(product), FakeStoreGetProductResponseDto.class);
 

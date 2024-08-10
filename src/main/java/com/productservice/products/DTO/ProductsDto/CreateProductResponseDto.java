@@ -11,7 +11,7 @@ import lombok.Setter;
 public class CreateProductResponseDto {
     private long id;
     private String name;
-    private double price;
+    private Double price;
     private String imageurl;
     private String description;
 
