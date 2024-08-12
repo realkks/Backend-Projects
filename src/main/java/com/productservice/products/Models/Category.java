@@ -1,6 +1,7 @@
 package com.productservice.products.Models;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.OneToMany;
 import lombok.Getter;
@@ -20,4 +21,6 @@ public class Category extends BaseModel{
     private List<Product> allProducts;
     @OneToMany
     private List<Product> featuredProducts;
+    @ManyToOne
+    private SubCategory subCategory;
 }

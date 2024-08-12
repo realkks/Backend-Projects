@@ -2,6 +2,8 @@ package com.productservice.products.Repositories;
 
 import com.productservice.products.Models.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -21,4 +23,18 @@ public interface ProductRepo extends JpaRepository<Product,Long> {
     List<Product> findAll();
 
     Optional<Product> findById(Long id);
+
+    // Implementing JPA method/query
+    List<Product> findAllByCategory_SubCategory_SurNameEquals(String subCatgName);
+
+    // Implementing JPA query according to our choices having any method name
+    @Query("select p from Product p where p.category.subCategory.surName= :categorySurname")
+    List<Product> bsbshbhjs(@Param("categorySurname") String categotySurname);
+
+    //Implementing Raw query to get complex data
+    @Query(
+            value = CustomQuery.get_product_with_subcategory_name,
+            nativeQuery = true
+    )
+    List<Product> raqQueryImpl();
 }
