@@ -27,7 +27,3 @@ bin/
 
 ### Mac OS ###
 .DS_Store
-
-### Target folder ####
-Product-Service/ProductsCatalogue/target/*
-Product-Service/UserService/target/*
