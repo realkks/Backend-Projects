@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JpaBuddyIdeaProjectConfig" ddlActionDbType="mysql">
+    <option name="defaultUnitInitialized" value="true" />
+    <option name="renamerInitialized" value="true" />
+    <option name="sourceModelValue" value="ProductService" />
+    <option name="targetDbValue" value="3518c52c-a2df-42c0-b606-6af51ae5f6a4" />
+  </component>
+</project>
