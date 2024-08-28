@@ -1,4 +1,4 @@
-package com.productservice.userservice.Repository;
+package com.productservice.userservice.Models;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

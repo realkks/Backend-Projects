@@ -1,5 +1,7 @@
-package com.productservice.userservice.Repository;
+package com.productservice.userservice.Models;
 
+import com.productservice.userservice.Models.BaseModel;
+import com.productservice.userservice.Models.Role;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.ManyToMany;
@@ -12,7 +14,7 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
-public class User extends BaseModel{
+public class User extends BaseModel {
     private String password;
     private String email;
     private String phone;

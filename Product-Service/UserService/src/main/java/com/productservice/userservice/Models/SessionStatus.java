@@ -1,4 +1,4 @@
-package com.productservice.userservice.Repository;
+package com.productservice.userservice.Models;
 
 public enum SessionStatus {
     ACTIVE,

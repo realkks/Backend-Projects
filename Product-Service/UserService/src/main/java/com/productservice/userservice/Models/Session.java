@@ -1,4 +1,4 @@
-package com.productservice.userservice.Repository;
+package com.productservice.userservice.Models;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -9,7 +9,7 @@ import java.util.Date;
 @Getter
 @Setter
 
-public class Session extends BaseModel{
+public class Session extends BaseModel {
     private String token;
     private Date expirydate;
     @ManyToOne
