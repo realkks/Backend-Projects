@@ -5,15 +5,13 @@ import com.productservice.userservice.Exceptions.UserAlreadyExistsException;
 import com.productservice.userservice.Exceptions.UserNotFoundException;
 import com.productservice.userservice.Exceptions.WrongPasswordException;
 import com.productservice.userservice.Services.AuthService;
+import io.jsonwebtoken.Jwts;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.util.MultiValueMapAdapter;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth")
@@ -66,5 +64,10 @@ public class AuthController {
             return new ResponseEntity<>(response,null, HttpStatus.BAD_REQUEST);
         }
 
+    }
+
+    @GetMapping("/validate")
+    public boolean validateToken(@RequestParam("token") String token){
+        return authService.validateToken(token);
     }
 }
