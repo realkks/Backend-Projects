@@ -27,3 +27,7 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+### ignore env.properties file ###
+Product-Service/ProductsCatalogue/src/main/resources/env.properties
+Product-Service/UserService/src/main/resources/env.properties
