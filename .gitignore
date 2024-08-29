@@ -31,3 +31,6 @@ bin/
 ### ignore env.properties file ###
 Product-Service/ProductsCatalogue/src/main/resources/env.properties
 Product-Service/UserService/src/main/resources/env.properties
+Product-Service/ProductsCatalogue/target/classes/env.properties
+Product-Service/UserService/target/classes/env.properties
+
