@@ -10,11 +10,13 @@ import com.productservice.userservice.Repository.UserRepo;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.security.Keys;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
 import javax.swing.text.html.Option;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 @Service
@@ -22,7 +24,12 @@ public class AuthService {
     private UserRepo userRepo;
     private BCryptPasswordEncoder bCryptPasswordEncoder;          // Using bcrypt to encrypt password
 
-    private SecretKey key = Jwts.SIG.HS256.key().build();   // Creating secret key object for jwt token
+    //private SecretKey key = Jwts.SIG.HS256.key().build();   // Creating secret key object for jwt token
+
+    // Creating secret key manually for jwt token
+    private SecretKey key = Keys.hmacShaKeyFor(
+            "MyNameisKamleshKumarSinghAndIamAJavaDeveloper".getBytes(StandardCharsets.UTF_8)
+    );
     private SessionRepo sessionRepo;
 
 
