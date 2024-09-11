@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="JpaBuddyIdeaProjectConfig" isInitGenerateDdl="true">
+  <component name="JpaBuddyIdeaProjectConfig">
     <option name="defaultUnitInitialized" value="true" />
     <option name="renamerInitialized" value="true" />
     <option name="sourceModelValue" value="Default" />
-    <option name="targetDbValue" value="37ced30a-3b0b-4fd1-bf91-6444fd45ab65" />
+    <option name="targetDbValue" value="71e9116c-7667-4d2f-b945-4df4935fb5b2" />
+    <option name="reverseEngineeringLastDbConnectionId" value="28c51ff0-1889-42d5-aa28-5fd72983b414" />
+    <option name="reLastEntityCreationPackage" value="src/main/java/com/productservice/userservice" />
   </component>
 </project>

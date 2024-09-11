@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/products") // /products path will be common for all methods in this class .
+@RequestMapping("products") // /products path will be common for all methods in this class .
 public class ProductController {
     private ProductService productService;
 
@@ -42,10 +42,10 @@ public class ProductController {
         return response;
 
     }
-//    @GetMapping("/{id}")        // Variable path
-//    public String getSingleProduct(@PathVariable ("id") long id){    // Defining path variable and receiving required id.
-//        return "Here is your product" + id ;
-//    }
+    @GetMapping("/{id}")        // Variable path
+    public String getSingleProduct(@PathVariable ("id") long id){    // Defining path variable and receiving required id.
+        return "Here is your product" + id ;
+    }
 
     @DeleteMapping("/{id}")
     public void deleteSingleproduct(){
